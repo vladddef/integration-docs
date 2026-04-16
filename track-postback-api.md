@@ -13,7 +13,7 @@ Pass your API key as the `api_key` query parameter. Keys are provisioned by the 
 
 | Parameter     | Required | Description                                 |
 |---------------|----------|---------------------------------------------|
-| `api_key`     | yes      | Your API key                                |
+| `sub30`     | yes      | Your API key                                |
 | `pid`         | yes      | Partner/publisher ID                        |
 | `offer_id`    | yes      | Offer ID                                    |
 | `sub9`        | no       | Lead name                                   |
