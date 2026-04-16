@@ -2,7 +2,7 @@
 
 ## Endpoint
 ```
-GET https://s2s.erectogen-ro.shop/landing/track-postback
+GET https://t.trklinkx.com/click
 ```
 
 ## Authentication
