@@ -44,6 +44,20 @@ GET https://t.trklinkx.com/click?pid=11&offer_id=12716&sub1=6ade9d6a325c9f0001b4
 { "status": "ok" | "error", "data": { ... } }
 ```
 
+### Примеры ошибок
+
+При ошибке `status` равен `"error"`, а код ошибки лежит в `data.error`.
+
+| `data.error` | Когда | Пример |
+|---|---|---|
+| `security` | `sub30` отсутствует, неизвестен или отключён. | `{"status":"error","data":{"error":"security"}}` |
+| `ban` | Ваш IP заблокирован. | `{"status":"error","data":{"error":"ban"}}` |
+| `nophone` | Не передан `sub12`. | `{"status":"error","data":{"error":"nophone"}}` |
+| `data` | Не передан обязательный параметр, либо телефон или имя в неверном формате. В `bad` перечислены проблемные поля: имена параметров (`pid`, `sub1`, `sub9`, ...) для отсутствующих, `phone` или `name` для неверного формата. | `{"status":"error","data":{"error":"data","bad":["phone"]}}` |
+| `duplicate` | Тот же оффер + телефон уже отправляли в течение 14 дней. `id` — ID исходного лида. | `{"status":"error","data":{"error":"duplicate","id":1596426}}` |
+| `connection_timeout` | Лид не удалось доставить вовремя. Временная ошибка, повторите позже. | `{"status":"error","data":{"error":"connection_timeout"}}` |
+| `internal` | Непредвиденная ошибка на нашей стороне. | `{"status":"error","data":{"error":"internal"}}` |
+
 ## Примечания к поведению
 
 - **Порядок проверок:** чёрный список IP → `sub30` → обязательные параметры → формат телефона и имени → проверка дубликата → регистрация.
